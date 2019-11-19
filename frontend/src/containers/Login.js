@@ -39,10 +39,11 @@ class Login extends Component {
         if(obj.message === "Unable to acquire JDBC Connection; nested exception is org.hibernate.exception.GenericJDBCException: Unable to acquire JDBC Connection"){
             return 0;
         }
-        else if(obj.status === 500 && this.state.submitted === true){
+        else if(obj.status === 500){
             return 1;
         }
-        else if(obj.email !== "" && this.state.submitted === true){
+        else if(obj.email !== ""){
+            localStorage.setItem('role', obj.role);
             return 2;
         }
     }
@@ -56,7 +57,7 @@ class Login extends Component {
                 return <Typography color="error">Invalid Credentials</Typography>
             }
             else if(this.state.output === 2){
-                return <Typography style={{color: "green"}}>Login Successful</Typography>
+                window.location.replace('/');
             }
             else{
                 return <Typography color="error">Something Went Wrong!</Typography>
