@@ -6,6 +6,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles({
   root: {
@@ -19,7 +20,7 @@ const useStyles = makeStyles({
 
 export default function SimpleTable(props) {
   const classes = useStyles();
-
+  
   return (
     <Paper className={classes.root}>
       <Table className={classes.table} aria-label="simple table">
@@ -28,7 +29,7 @@ export default function SimpleTable(props) {
             <TableCell>Name</TableCell>
             <TableCell align="right">Email</TableCell>
             <TableCell align="right">Role</TableCell>
-            <TableCell align="right">Edit</TableCell>
+            <TableCell align="right">Change Role</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -39,7 +40,7 @@ export default function SimpleTable(props) {
               </TableCell>
               <TableCell align="right">{row.email}</TableCell>
               <TableCell align="right">{row.role}</TableCell>
-              <TableCell align="right">X</TableCell>
+              <TableCell align="right"><Button variant="contained" color="primary" onClick={() => props.handleOpen(row)}>EDIT</Button></TableCell>
             </TableRow>
           ))}
         </TableBody>
