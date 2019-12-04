@@ -1,11 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Drawer, List, ListItem, ListItemText, IconButton} from "@material-ui/core";
+import { Drawer, List, ListItem, ListItemText, IconButton, Divider} from "@material-ui/core";
+import HomeLogo from '@material-ui/icons/Home';
 
 import MenuIcon from '@material-ui/icons/Menu';
 
 function SideBar(props){
     const [open, setOpen] = React.useState(false);
+    const [links, setLinks] = React.useState([]);
+
+    React.useEffect(() => {
+        fetch('http://159.89.188.124:8080/links/' + localStorage.getItem('role'), {
+            method: "GET"
+        })
+        .then(res => res.json())
+        .then(result => setLinks(result))
+      });
+
+  
     
     return (
         <React.Fragment>
@@ -13,18 +25,25 @@ function SideBar(props){
                 <MenuIcon />
             </IconButton>
             <Drawer anchor="left" open={open} onClose={() => setOpen(false)}>
-            <div style={{minWidth: 200}} onClick={()=> setOpen(false)}>
+            <div onClick={()=> setOpen(false)}>
                 <List>
                     <Link to="/" style={{ textDecoration: 'none' }}>
                         <ListItem button>
-                            <ListItemText primary='This is Link 1' />
+                            <HomeLogo/>
+                            <ListItemText primary='Home' />
                         </ListItem>
                     </Link>
-                    <Link to="/" style={{ textDecoration: 'none' }}>
-                        <ListItem button>
-                            <ListItemText primary='This is Link 2' />
-                        </ListItem>
+                </List>
+                <Divider />
+                <List>
+                    {links.map(item => 
+                    <Link to='/redirect' style={{ textDecoration: 'none' }}>
+                    <ListItem button onClick={() => localStorage.setItem('link',item.link)}>
+                        <ListItemText primary={item.link} />
+                    </ListItem>
                     </Link>
+                    )}
+                    
                 </List>
             </div>
             </Drawer>

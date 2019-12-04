@@ -6,7 +6,7 @@ class Homepage extends Component {
         return (
             <div>
                 <NavigationBar/>
-                <h1>Home Page</h1>
+                <h1>Homepage</h1>
             </div>
         );
     }

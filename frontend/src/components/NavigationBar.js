@@ -21,18 +21,20 @@ const useStyles = makeStyles(theme => ({
 export default function ButtonAppBar(props) {
   const classes = useStyles();
     let isLogged = localStorage.getItem('role') !== null;
-    let button;
+    let button, sidecomp;
     if (isLogged){
+        sidecomp = <SideBar/>
         button = <Button onClick={() => {localStorage.removeItem('role'); window.location.replace('/')}} color="inherit">Log Out</Button>
     }
     else{
+        sidecomp = <div/>
         button = <Button href="/login" color="inherit">Login</Button>
     }
   return (
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <SideBar/>
+          {sidecomp}
           <Typography variant="h6" className={classes.title}>
             News
           </Typography>
