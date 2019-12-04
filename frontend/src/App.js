@@ -7,6 +7,7 @@ import Registration from './containers/Registration';
 import SuperAdmin from './containers/SuperAdmin';
 import LinksPage from './containers/LinksPage';
 import Links from './containers/Links';
+import RoleList from './containers/RoleList';
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
           <Route path="/admin" exact component={SuperAdmin}/>
           <Route path="/redirect" exact component={LinksPage}/>
           <Route path="/links" exact component={Links}/>
-
+          <Route path="/roles" exact component={RoleList}/>
       </React.Fragment>
   );
 }
