@@ -28,7 +28,7 @@ export default function ButtonAppBar(props) {
     }
     else{
         sidecomp = <div/>
-        button = <Button href="/login" color="inherit">Login</Button>
+        button = <div><Button href="/login" color="inherit">Login</Button><Button href="/register" color="inherit">Register</Button></div>
     }
   return (
     <div className={classes.root}>
@@ -36,7 +36,7 @@ export default function ButtonAppBar(props) {
         <Toolbar>
           {sidecomp}
           <Typography variant="h6" className={classes.title}>
-            News
+            Portal
           </Typography>
           {button}
         </Toolbar>

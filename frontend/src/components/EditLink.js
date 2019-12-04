@@ -8,19 +8,22 @@ import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 
 
-export default function EditModal(props) {
-    const [role, setRole] = React.useState('');
+export default function EditLink(props) {
+    const [role, setRole] = React.useState(props.selectedRole.role);
+    const [linkName, changeLink] = React.useState(props.selectedRole.link);
+    console.log(props.selectedRole.role)
     const handleChange = event => {
         setRole(event.target.value);
       };
+      const handleChangeName = event => {
+        changeLink(event.target.value);
+      };
     const cancelClose = () => {
         props.handleClose();
-        setRole('');
     }
-    const updateClose = (userID, newrole) => {
-        props.updateRole(userID, newrole);
+    const updateClose = (linkID, newname, newrole) => {
+        props.updateRole(linkID, newname, newrole);
         props.handleClose();
-        setRole('');
     }
   return (
       <Dialog
@@ -29,8 +32,14 @@ export default function EditModal(props) {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">{"Change Role For " + props.user.name}</DialogTitle>
+        <DialogTitle id="alert-dialog-title">{"Edit " + props.selectedRole.link}</DialogTitle>
         <DialogContent>
+        <TextField
+                    id="linkname"
+                    label="Link"
+                    value={linkName}
+                    onChange={handleChangeName}
+                /><br/>
           <TextField select label="Role"
           style={{width: 160}}
           value={role}
@@ -46,7 +55,7 @@ export default function EditModal(props) {
           <Button onClick={cancelClose} color="primary">
             Cancel
           </Button>
-          <Button disabled={role === ''} onClick={() => updateClose(props.user.employee_id, role)} color="primary" autoFocus>
+          <Button onClick={() => updateClose(props.selectedRole.link_id, linkName, role)} color="primary" autoFocus>
             Save Changes
           </Button>
         </DialogActions>

@@ -10,8 +10,10 @@ import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles({
   root: {
-    width: 1000,
+    width: 700,
     overflowX: 'auto',
+    margin: 'auto',
+    marginTop: 20
   },
   table: {
     minWidth: 650,
@@ -28,19 +30,19 @@ export default function LinksTable(props) {
           <TableRow>
             <TableCell>Link</TableCell>
             <TableCell align="right">Role</TableCell>
-            <TableCell align="right">Change Role</TableCell>
-            <TableCell align="right">Delete</TableCell>
+            <TableCell align="center">Change Role</TableCell>
+            <TableCell align="center">Delete</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {props.data.map(row => (
-            <TableRow key={row.name}>
+            <TableRow key={row.link_id}>
               <TableCell component="th" scope="row">
-                {row.name}
+                {row.link}
               </TableCell>
-              <TableCell align="right">{row.email}</TableCell>
               <TableCell align="right">{row.role}</TableCell>
-              <TableCell align="right"><Button variant="contained" color="primary" onClick={() => props.handleOpen(row)}>EDIT</Button></TableCell>
+              <TableCell align="center"><Button variant="contained" color="primary" onClick={() => props.handleOpen(row)}>EDIT</Button></TableCell>
+              <TableCell align="center"><Button variant="contained" color="secondary" onClick={() => props.deleteLink(row.link_id)}>Delete</Button></TableCell>
             </TableRow>
           ))}
         </TableBody>

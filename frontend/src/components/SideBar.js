@@ -22,7 +22,7 @@ function SideBar(props){
     return (
         <React.Fragment>
             <IconButton edge="start" onClick={() => setOpen(true)} aria-label="menu">
-                <MenuIcon />
+                <MenuIcon style={{color: 'white'}}/>
             </IconButton>
             <Drawer anchor="left" open={open} onClose={() => setOpen(false)}>
             <div onClick={()=> setOpen(false)}>

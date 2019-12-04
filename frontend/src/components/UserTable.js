@@ -12,6 +12,7 @@ const useStyles = makeStyles({
   root: {
     width: 1000,
     overflowX: 'auto',
+    margin: 'auto'
   },
   table: {
     minWidth: 650,
