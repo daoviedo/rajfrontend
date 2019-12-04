@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import UserTable from '../components/UserTable';
 import EditModal from '../components/EditModal';
+import NavigationBar from '../components/NavigationBar';
 
 class SuperAdmin extends Component {
     constructor(props){
@@ -58,6 +59,7 @@ class SuperAdmin extends Component {
         console.log(this.state)
         return (
             <div>
+                <NavigationBar/>
                 <UserTable data={this.state.data} handleOpen={this.openModal}/>
                 <EditModal roleData={this.state.roleList} updateRole={this.updateRole} user={this.state.userSelected} open={this.state.openModal} handleClose={this.closeModal}/>
             </div>

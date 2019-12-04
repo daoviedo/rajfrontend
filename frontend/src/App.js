@@ -6,6 +6,7 @@ import Homepage from './containers/Homepage';
 import Registration from './containers/Registration';
 import SuperAdmin from './containers/SuperAdmin';
 import LinksPage from './containers/LinksPage';
+import Links from './containers/Links';
 
 function App() {
   return (
@@ -15,6 +16,8 @@ function App() {
           <Route path="/register" exact component={Registration}/>
           <Route path="/admin" exact component={SuperAdmin}/>
           <Route path="/redirect" exact component={LinksPage}/>
+          <Route path="/links" exact component={Links}/>
+
       </React.Fragment>
   );
 }
